@@ -4,6 +4,13 @@ import java.util.List;
 
 public interface INaryTree<E> {
     /**
+     * Returns the root of the tree.
+     *
+     * @return the root of the tree
+     */
+    E getRoot();
+
+    /**
      * Ensures that this collection contains the specified element.
      *
      * @param element - element whose presence in this collection is to be ensured

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  *
  * @param <E> the type parameter
  */
-public class NaryTreeNode<E> implements INaryTreeNode<E> {
+class NaryTreeNode<E> implements INaryTreeNode<E> {
     private final List<INaryTreeNode<E>> children;
 
     @Setter
@@ -85,6 +85,14 @@ public class NaryTreeNode<E> implements INaryTreeNode<E> {
                 '}';
     }
 
+    /**
+     * @return
+     */
+    @Override
+    public E getRoot() {
+        return this.value;
+    }
+
     @Override
     public boolean add(final E element) {
         return this.add(new NaryTreeNode<>(element));
@@ -92,8 +100,13 @@ public class NaryTreeNode<E> implements INaryTreeNode<E> {
 
     @Override
     public boolean remove(final Object element) {
-        if (this.getClass() != element.getClass()) return false;
-        return this.children.remove(element);
+        if (this.value.getClass() != element.getClass()) return false;
+        for (INaryTreeNode<E> child : this.children) {
+            if (child.getValue().equals(element)) {
+                return this.children.remove(child);
+            }
+        }
+        return false;
     }
 
     @Override
@@ -113,9 +126,8 @@ public class NaryTreeNode<E> implements INaryTreeNode<E> {
 
     @Override
     public boolean contains(final Object element) {
-        if (this.value.equals(element)) {
-            return true;
-        }
+        if (this.value == null) return element == null;
+        if (this.value.equals(element)) return true;
         for (final INaryTree<E> child : this.children) {
             if (child.contains(element)) {
                 return true;
