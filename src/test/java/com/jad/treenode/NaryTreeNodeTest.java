@@ -242,7 +242,7 @@ public class NaryTreeNodeTest {
 
     @Test
     public void toPostfixList() {
-        final INaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final INaryTree<String> a = NaryTreeNodeTest.createTestTreeNode();
         List<String> postFixListExpected = List.of("K", "L", "M", "D", "E", "F", "G", "B", "H", "I", "J", "C", "A");
         assertEquals(postFixListExpected, a.toPostfixList());
     }
@@ -279,14 +279,14 @@ public class NaryTreeNodeTest {
 
     @Test
     public void toPrefixList() {
-        final INaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final INaryTree<String> a = NaryTreeNodeTest.createTestTreeNode();
         List<String> prefixListExpected = List.of("A", "B", "D", "K", "L", "M", "E", "F", "G", "C", "H", "I", "J");
         assertEquals(prefixListExpected, a.toPrefixList());
     }
 
     @Test
     public void toByWidthList() {
-        final INaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final INaryTree<String> a = NaryTreeNodeTest.createTestTreeNode();
         List<String> byWidthListExpected = List.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M");
         assertEquals(byWidthListExpected, a.toByWidthList());
     }
