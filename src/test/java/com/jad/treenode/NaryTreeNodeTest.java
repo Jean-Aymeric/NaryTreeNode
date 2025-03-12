@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NaryTreeNodeTest {
     @Test
     public void getValue() {
-        final NaryTreeNode<String> treeNode = new NaryTreeNode<>("value");
+        final INaryTreeNode<String> treeNode = new NaryTreeNode<>("value");
         assertEquals("value", treeNode.getValue());
     }
 
@@ -25,7 +25,7 @@ public class NaryTreeNodeTest {
     @Test
     public void getChild() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>();
-        final NaryTreeNode<String> child = new NaryTreeNode<>();
+        final INaryTreeNode<String> child = new NaryTreeNode<>();
         treeNode.add(child);
         assertEquals(child, treeNode.getChild(0));
     }
@@ -34,14 +34,14 @@ public class NaryTreeNodeTest {
     public void getChildren() {
         final int nbChildren = 10;
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>();
-        final List<NaryTreeNode<String>> children = new LinkedList<>();
+        final List<INaryTreeNode<String>> children = new LinkedList<>();
         for (int i = 0; i < nbChildren; i++) {
             children.add(new NaryTreeNode<>());
         }
-        for (final NaryTreeNode<String> child : children) {
+        for (final INaryTreeNode<String> child : children) {
             treeNode.add(child);
         }
-        final List<NaryTreeNode<String>> childrenReturned = treeNode.getChildren();
+        final List<INaryTreeNode<String>> childrenReturned = treeNode.getChildren();
         for (int i = 0; i < nbChildren; i++) {
             assertEquals(children.get(i), childrenReturned.get(i));
         }
@@ -49,8 +49,8 @@ public class NaryTreeNodeTest {
 
     @Test
     public void getChildrenIsNotModifiable() {
-        final NaryTreeNode<String> treeNode = new NaryTreeNode<>();
-        final List<NaryTreeNode<String>> children = treeNode.getChildren();
+        final INaryTreeNode<String> treeNode = new NaryTreeNode<>();
+        final List<INaryTreeNode<String>> children = treeNode.getChildren();
         try {
             children.add(new NaryTreeNode<>());
             fail("Should have thrown an UnsupportedOperationException exception");
@@ -62,7 +62,7 @@ public class NaryTreeNodeTest {
     @Test
     public void add() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>();
-        final NaryTreeNode<String> child = new NaryTreeNode<>();
+        final INaryTreeNode<String> child = new NaryTreeNode<>();
         treeNode.add(child);
         assertEquals(child, treeNode.getChild(0));
         treeNode.add("child");
@@ -72,7 +72,7 @@ public class NaryTreeNodeTest {
     @Test
     public void remove() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>();
-        final NaryTreeNode<String> child = new NaryTreeNode<>();
+        final INaryTreeNode<String> child = new NaryTreeNode<>();
         assertTrue(treeNode.add(child));
         assertEquals(1, treeNode.getChildrenCount());
         assertFalse(treeNode.add(child));
@@ -120,7 +120,7 @@ public class NaryTreeNodeTest {
     @Test
     public void contains() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
-        final NaryTreeNode<String> child = new NaryTreeNode<>("child");
+        final INaryTreeNode<String> child = new NaryTreeNode<>("child");
         treeNode.add(child);
         assertTrue(treeNode.contains("root"));
         assertTrue(treeNode.contains("child"));
@@ -130,7 +130,7 @@ public class NaryTreeNodeTest {
     @Test
     public void getHeight() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
-        final NaryTreeNode<String> child = new NaryTreeNode<>("child");
+        final INaryTreeNode<String> child = new NaryTreeNode<>("child");
         treeNode.add(child);
         assertEquals(2, treeNode.getHeight());
     }
@@ -138,7 +138,7 @@ public class NaryTreeNodeTest {
     @Test
     public void size() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
-        final NaryTreeNode<String> child = new NaryTreeNode<>("child");
+        final INaryTreeNode<String> child = new NaryTreeNode<>("child");
         treeNode.add(child);
         assertEquals(2, treeNode.size());
     }
@@ -146,7 +146,7 @@ public class NaryTreeNodeTest {
     @Test
     public void getNumberOfLeaves() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
-        final NaryTreeNode<String> child = new NaryTreeNode<>("child");
+        final INaryTreeNode<String> child = new NaryTreeNode<>("child");
         treeNode.add(child);
         assertEquals(1, treeNode.getNumberOfLeaves());
     }
@@ -155,7 +155,7 @@ public class NaryTreeNodeTest {
     public void toJson() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
         final NaryTreeNode<String> child = new NaryTreeNode<>("child");
-        final NaryTreeNode<String> subChild = new NaryTreeNode<>("subChild");
+        final INaryTreeNode<String> subChild = new NaryTreeNode<>("subChild");
         assertEquals("{\"value\":\"root\"}", treeNode.toJson());
         treeNode.add(child);
         assertEquals("{\"value\":\"root\",\"children\":[{\"value\":\"child\"}]}", treeNode.toJson());
@@ -169,7 +169,7 @@ public class NaryTreeNodeTest {
     public void testToString() {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
         final NaryTreeNode<String> child = new NaryTreeNode<>("child");
-        final NaryTreeNode<String> subChild = new NaryTreeNode<>("subChild");
+        final INaryTreeNode<String> subChild = new NaryTreeNode<>("subChild");
         assertEquals("NaryTreeNode{value=root, children=[]}", treeNode.toString());
         treeNode.add(child);
         assertEquals("NaryTreeNode{value=root, children=[NaryTreeNode{value=child, children=[]}]}",
@@ -185,12 +185,12 @@ public class NaryTreeNodeTest {
         final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
         final NaryTreeNode<String> child1 = new NaryTreeNode<>("child1");
         final NaryTreeNode<String> child2 = new NaryTreeNode<>("child2");
-        final NaryTreeNode<String> child3 = new NaryTreeNode<>("child3");
-        final NaryTreeNode<String> subChild11 = new NaryTreeNode<>("subChild11");
-        final NaryTreeNode<String> subChild12 = new NaryTreeNode<>("subChild12");
+        final INaryTreeNode<String> child3 = new NaryTreeNode<>("child3");
+        final INaryTreeNode<String> subChild11 = new NaryTreeNode<>("subChild11");
+        final INaryTreeNode<String> subChild12 = new NaryTreeNode<>("subChild12");
         final NaryTreeNode<String> subChild21 = new NaryTreeNode<>("subChild21");
-        final NaryTreeNode<String> subChild22 = new NaryTreeNode<>("subChild22");
-        final NaryTreeNode<String> subSubChild211 = new NaryTreeNode<>("subSubChild211");
+        final INaryTreeNode<String> subChild22 = new NaryTreeNode<>("subChild22");
+        final INaryTreeNode<String> subSubChild211 = new NaryTreeNode<>("subSubChild211");
         assertEquals("""
                      root
                      """, treeNode.toPrettyText());
@@ -242,7 +242,7 @@ public class NaryTreeNodeTest {
 
     @Test
     public void toPostfixList() {
-        final NaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final INaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
         List<String> postFixListExpected = List.of("K", "L", "M", "D", "E", "F", "G", "B", "H", "I", "J", "C", "A");
         assertEquals(postFixListExpected, a.toPostfixList());
     }
@@ -252,15 +252,15 @@ public class NaryTreeNodeTest {
         final NaryTreeNode<String> b = new NaryTreeNode<>("B");
         final NaryTreeNode<String> c = new NaryTreeNode<>("C");
         final NaryTreeNode<String> d = new NaryTreeNode<>("D");
-        final NaryTreeNode<String> e = new NaryTreeNode<>("E");
-        final NaryTreeNode<String> f = new NaryTreeNode<>("F");
-        final NaryTreeNode<String> g = new NaryTreeNode<>("G");
-        final NaryTreeNode<String> h = new NaryTreeNode<>("H");
-        final NaryTreeNode<String> i = new NaryTreeNode<>("I");
-        final NaryTreeNode<String> j = new NaryTreeNode<>("J");
-        final NaryTreeNode<String> k = new NaryTreeNode<>("K");
-        final NaryTreeNode<String> l = new NaryTreeNode<>("L");
-        final NaryTreeNode<String> m = new NaryTreeNode<>("M");
+        final INaryTreeNode<String> e = new NaryTreeNode<>("E");
+        final INaryTreeNode<String> f = new NaryTreeNode<>("F");
+        final INaryTreeNode<String> g = new NaryTreeNode<>("G");
+        final INaryTreeNode<String> h = new NaryTreeNode<>("H");
+        final INaryTreeNode<String> i = new NaryTreeNode<>("I");
+        final INaryTreeNode<String> j = new NaryTreeNode<>("J");
+        final INaryTreeNode<String> k = new NaryTreeNode<>("K");
+        final INaryTreeNode<String> l = new NaryTreeNode<>("L");
+        final INaryTreeNode<String> m = new NaryTreeNode<>("M");
 
         a.add(b);
         a.add(c);
@@ -279,14 +279,14 @@ public class NaryTreeNodeTest {
 
     @Test
     public void toPrefixList() {
-        final NaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final INaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
         List<String> prefixListExpected = List.of("A", "B", "D", "K", "L", "M", "E", "F", "G", "C", "H", "I", "J");
         assertEquals(prefixListExpected, a.toPrefixList());
     }
 
     @Test
     public void toByWidthList() {
-        final NaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final INaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
         List<String> byWidthListExpected = List.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M");
         assertEquals(byWidthListExpected, a.toByWidthList());
     }

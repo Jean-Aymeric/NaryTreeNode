@@ -2,15 +2,15 @@ package com.jad.treenode;
 
 import lombok.Getter;
 
+@Getter
 public class NaryTree<E> {
-    @Getter
-    private final NaryTreeNode<E> root;
+    private final INaryTreeNode<E> root;
 
     public NaryTree() {
         this(null);
     }
 
-    public NaryTree(NaryTreeNode<E> root) {
+    public NaryTree(INaryTreeNode<E> root) {
         this.root = root;
     }
 }
