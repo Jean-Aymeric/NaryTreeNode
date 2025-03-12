@@ -100,9 +100,8 @@ class NaryTreeNode<E> implements INaryTreeNode<E> {
 
     @Override
     public boolean remove(final Object element) {
-        if (this.value.getClass() != element.getClass()) return false;
         for (INaryTreeNode<E> child : this.children) {
-            if (child.getValue().equals(element)) {
+            if ((child.getValue() != null) && child.getValue().equals(element)) {
                 return this.children.remove(child);
             }
         }

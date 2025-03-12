@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class NaryTreeNodeTest {
+class NaryTreeNodeTest {
     @Test
     public void getValue() {
         final INaryTreeNode<String> treeNode = new NaryTreeNode<>("value");
@@ -71,12 +71,11 @@ public class NaryTreeNodeTest {
 
     @Test
     public void remove() {
-        final NaryTreeNode<String> treeNode = new NaryTreeNode<>();
-        final INaryTreeNode<String> child = new NaryTreeNode<>();
+        final NaryTreeNode<String> treeNode = new NaryTreeNode<>("root");
+        final INaryTreeNode<String> child = new NaryTreeNode<>("child");
         assertTrue(treeNode.add(child));
         assertEquals(1, treeNode.getChildrenCount());
-        assertFalse(treeNode.add(child));
-        assertTrue(treeNode.remove(child));
+        assertTrue(treeNode.remove("child"));
         assertEquals(0, treeNode.getChildrenCount());
     }
 
