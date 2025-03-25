@@ -2,6 +2,13 @@ package com.jad.treenode;
 
 import java.util.List;
 
+/**
+ * Represents a tree data structure.
+ * A tree is a hierarchical data structure that consists of nodes connected by edges.
+ * Each node has a value and a list of children.
+ *
+ * @param <E> - the type of elements in this tree
+ */
 public interface INaryTree<E> extends Iterable<E> {
     /**
      * Returns the root of the tree.
