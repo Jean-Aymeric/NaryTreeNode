@@ -1,5 +1,7 @@
 package com.jad.treenode;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class NaryTree<E> implements INaryTree<E> {
@@ -85,5 +87,19 @@ public class NaryTree<E> implements INaryTree<E> {
     @Override
     public INaryTree<E> getNodeFromElement(final E element) {
         return this.root.getNodeFromElement(element);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.root == null;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        List<E> list = this.toByWidthList();
+        if (list != null) {
+            return list.iterator();
+        }
+        return Collections.emptyIterator();
     }
 }

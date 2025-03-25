@@ -2,7 +2,7 @@ package com.jad.treenode;
 
 import java.util.List;
 
-public interface INaryTree<E> {
+public interface INaryTree<E> extends Iterable<E> {
     /**
      * Returns the root of the tree.
      *
@@ -85,11 +85,11 @@ public interface INaryTree<E> {
 
     /**
      * Returns a pretty text representation of the tree.
-     * <p>The pretty text representation consists of a list of the node's value and its children.
+     * The pretty text representation consists of a list of the node's value and its children.
      * All the nodes are indented according to their depth in the tree.
      * The string representation of the node's value is obtained by calling the toString method.
-     * </p>
-     * <p>Example:
+     * <p>
+     * Example:
      * <pre>
      *      root
      *      ├─child1
@@ -101,7 +101,6 @@ public interface INaryTree<E> {
      *      │ ├─subChild22
      *      ├─child3
      *  </pre>
-     * </p>
      *
      * @return a pretty text representation of the tree
      */
@@ -146,4 +145,10 @@ public interface INaryTree<E> {
      */
     INaryTree<E> getNodeFromElement(E element);
 
+    /**
+     * Returns True if the tree is empty.
+     *
+     * @return True if the tree is empty
+     */
+    boolean isEmpty();
 }

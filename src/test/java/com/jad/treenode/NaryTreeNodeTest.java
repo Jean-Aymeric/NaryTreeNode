@@ -307,4 +307,13 @@ class NaryTreeNodeTest {
         assertEquals(a.getChild(0).getChild(0).getChild(1), a.getNodeFromElement("L"));
         assertEquals(a.getChild(0).getChild(0).getChild(2), a.getNodeFromElement("M"));
     }
+
+    @Test
+    void forEach() {
+        final NaryTreeNode<String> a = NaryTreeNodeTest.createTestTreeNode();
+        final List<String> list = new LinkedList<>();
+        a.forEach(list::add);
+        List<String> byWidthListExpected = List.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M");
+        assertEquals(byWidthListExpected, list);
+    }
 }

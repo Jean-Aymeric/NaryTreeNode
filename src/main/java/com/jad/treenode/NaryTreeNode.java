@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.text.MessageFormat;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -85,9 +86,6 @@ class NaryTreeNode<E> implements INaryTreeNode<E> {
                 '}';
     }
 
-    /**
-     * @return
-     */
     @Override
     public E getRoot() {
         return this.value;
@@ -212,5 +210,15 @@ class NaryTreeNode<E> implements INaryTreeNode<E> {
             result = (response == null) ? result : response;
         }
         return result;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return this.toByWidthList().iterator();
     }
 }
