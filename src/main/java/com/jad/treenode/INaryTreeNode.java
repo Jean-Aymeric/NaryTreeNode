@@ -2,7 +2,17 @@ package com.jad.treenode;
 
 import java.util.List;
 
-interface INaryTreeNode<E> extends INaryTree<E> {
+/**
+ * Interface for a node in an n-ary tree.
+ * This interface extends the INaryTree interface and provides methods
+ * to manage the node's children, add new nodes, remove nodes,
+ * and perform various tree operations.
+ * It also provides methods to generate a string representation of the tree,
+ * convert the tree to JSON format, and traverse the tree in different orders (prefix, postfix, and by width).
+ *
+ * @param <E> - the type of the value stored in the node
+ */
+public interface INaryTreeNode<E> extends INaryTree<E> {
     /**
      * Returns the child at the specified position in the children list of this node.
      *

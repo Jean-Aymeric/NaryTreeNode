@@ -5,11 +5,17 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * A class that represents a N-ary tree.
+ * NaryTree is a tree data structure where each node can have multiple children.
+ * It implements the INaryTree interface and provides methods to manipulate the tree.
+ * This class is a generic class that can hold any type of element.
+ * It provides methods to add, remove, and search for elements,
+ * as well as methods to generate a string representation of the tree,
+ * convert it to JSON format, and traverse the tree in different orders (prefix, postfix, and by width).
+ * It also provides methods to get the height of the tree,
+ * the number of leaves, and the size of the tree.
  *
- * @param <E> - the type of elements held in this tree
+ * @param <E> - the type of elements in this tree
  */
-
 public class NaryTree<E> implements INaryTree<E> {
     private final INaryTreeNode<E> root;
 

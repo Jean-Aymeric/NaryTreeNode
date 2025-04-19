@@ -12,11 +12,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * The type Nary tree node.
+ * A class that represents a N-ary tree node.
+ * This class implements the INaryTreeNode interface and provides methods to manage the node's children,
+ * add new nodes, remove nodes, and perform various tree operations.
+ * It also provides methods to generate a string representation of the tree,
+ * convert the tree to JSON format, and traverse the tree in different orders (prefix, postfix, and by width).
  *
- * @param <E> the type parameter
+ * @param <E> - the type of elements held in this node
  */
-class NaryTreeNode<E> implements INaryTreeNode<E> {
+public class NaryTreeNode<E> implements INaryTreeNode<E> {
     private final List<INaryTreeNode<E>> children;
 
     @Setter
